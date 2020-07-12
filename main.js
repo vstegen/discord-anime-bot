@@ -6,8 +6,20 @@ const request = require('./src/requests/requestSchema');
 const schemas = require('./src/requests/schemas');
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
 const TOKEN = process.env.TOKEN;
+
+const fs = require('fs');
+
+const commands = {};
+const files = fs.readdirSync('./commands');
+const jsFiles = files.filter((file) => file.endsWith('.js'));
+
+jsFiles.forEach((commandFile) => {
+  const command = require(`./commands/${commandFile}`);
+  if (command.prefix && command.fn) {
+    commands[command.prefix] = command.fn;
+  }
+});
 
 client.on('ready', () => {
   console.info(`Logged in as ${client.user.tag}!`);
