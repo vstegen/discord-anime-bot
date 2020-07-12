@@ -34,7 +34,7 @@ function handleResponse(response) {
 
 function handleData(data) {
   console.log(data);
-  data.data.Media.description = data.data.Media.description.replace(/<br><br>/g, '');
+  data.data.Media.description = data.data.Media.description.replace(/<br>/g, '');
   return data;
 }
 

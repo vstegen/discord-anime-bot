@@ -1,4 +1,4 @@
-const query = `
+const queryAnime = `
 query ($name: String) {
   Media (search: $name, type: ANIME) {
     id
@@ -12,8 +12,23 @@ query ($name: String) {
       large
     }
     siteUrl
+    episodes
+    season
+    seasonYear
+    startDate {
+      year
+      month
+      day
+    }
+    endDate {
+      year
+      month
+      day
+    }
+    averageScore
+    meanScore
   }
 }
 `;
 
-module.exports = { query };
+module.exports = { queryAnime };
