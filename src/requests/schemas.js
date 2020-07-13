@@ -31,4 +31,32 @@ query ($name: String) {
 }
 `;
 
-module.exports = { queryAnime };
+const queryManga = `
+query ($name: String) {
+  Media (search: $name, type: MANGA) {
+    title{
+      romaji
+    }
+    coverImage {
+      large
+    }
+    siteUrl
+    startDate {
+      year
+      month
+      day
+    }
+    endDate {
+      year
+      month
+      day
+    }
+    volumes
+    averageScore
+    meanScore
+    description
+  }
+}
+`;
+
+module.exports = { queryAnime, queryManga };
