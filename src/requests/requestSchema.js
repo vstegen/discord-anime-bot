@@ -1,12 +1,12 @@
-fetch = require('node-fetch');
+fetch = require("node-fetch");
 
 const getRequest = (query, variables) => {
-  const url = 'https://graphql.anilist.co',
+  const url = "https://graphql.anilist.co",
     options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
         query: query,
@@ -33,8 +33,7 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-  console.log(data);
-  data.data.Media.description = data.data.Media.description.replace(/<br>/g, '');
+  data.data.Media.description = data.data.Media.description.replace(/<br>/g, "");
   return data;
 }
 
